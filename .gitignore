@@ -1,0 +1,7 @@
+.vercel
+videos/*
+Videos/
+videos/
+*.mp4
+*.mov
+*.MOV
