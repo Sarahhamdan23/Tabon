@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (iconMenu) {
         iconMenu.addEventListener('click', function(e) {
-            document.body.classList.toggle('_lock');
+            document.body.classList.toggle('menu-open');
             iconMenu.classList.toggle('_active');
             menuBody.classList.toggle('_active');
         });
@@ -15,10 +15,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = document.querySelectorAll('.menu__link');
     menuLinks.forEach(link => {
         link.addEventListener('click', function() {
-            document.body.classList.remove('_lock');
+            document.body.classList.remove('menu-open');
             iconMenu.classList.remove('_active');
             menuBody.classList.remove('_active');
         });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.menu__body') && !e.target.closest('.icon-menu') && menuBody.classList.contains('_active')) {
+            document.body.classList.remove('menu-open');
+            iconMenu.classList.remove('_active');
+            menuBody.classList.remove('_active');
+        }
     });
 
     // Add smooth scrolling for anchor links

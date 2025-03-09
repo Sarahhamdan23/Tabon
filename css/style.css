@@ -1367,26 +1367,105 @@ iframe {
 }
 
 @media (max-width: 47.999rem) {
-  .spollers-faq__item.active .spollers-faq__button img {
-    transform: translate(-10px, -10px) rotate(180deg);
+  .menu__body {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding: 9.375rem 0.938rem 1.875rem 0.938rem;
+    overflow: auto;
+    transition: left 0.3s ease;
+    z-index: 50;
   }
 
-  .spollers-faq__button span {
-    padding-top: 15px;
-    padding-left: 10px;
-    padding-bottom: 15px;
-    font-weight: 600;
-    font-size: 14px;
+  .menu__body._active {
+    left: 0;
   }
 
-  .spollers-faq__button img {
-    padding-right: 10px;
+  .menu__body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 5.75rem;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 2;
   }
 
-  .spollers-faq__inner {
-    font-size: 16px;
-    padding-left: 10px;
-    line-height: 130%;
+  .menu__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin: 0;
+  }
+
+  .menu__item {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .menu__link {
+    font-size: 1.5rem;
+    color: #303a4d;
+  }
+
+  .icon-menu {
+    display: block;
+    position: relative;
+    width: 1.875rem;
+    height: 1.125rem;
+    cursor: pointer;
+    z-index: 55;
+  }
+
+  .icon-menu span,
+  .icon-menu::before,
+  .icon-menu::after {
+    content: "";
+    transition: all 0.3s ease;
+    right: 0;
+    position: absolute;
+    width: 100%;
+    height: 0.125rem;
+    background-color: #303a4d;
+  }
+
+  .icon-menu::before {
+    top: 0;
+  }
+
+  .icon-menu::after {
+    bottom: 0;
+  }
+
+  .icon-menu span {
+    top: calc(50% - 0.0625rem);
+  }
+
+  .icon-menu._active span {
+    width: 0;
+  }
+
+  .icon-menu._active::before {
+    top: calc(50% - 0.0625rem);
+    transform: rotate(-45deg);
+  }
+
+  .icon-menu._active::after {
+    bottom: calc(50% - 0.0625rem);
+    transform: rotate(45deg);
+  }
+
+  .menu-open {
+    overflow: hidden;
+  }
+
+  .actions-header__button {
+    margin-top: 2rem;
   }
 
   .pricing__container {
@@ -1443,13 +1522,6 @@ iframe {
 
   .icon-menu::after {
     bottom: 0;
-  }
-
-  .contact__container {
-    flex-direction: column;
-    padding-top: 80px;
-    gap: 50px;
-    padding-bottom: 80px;
   }
 
   .icon-menu span {
@@ -1822,17 +1894,21 @@ iframe {
 
   /* Main Sections */
   .main__container {
-    padding: 100px 15px;
+    padding-top: 19.188rem;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .main__title {
-    font-size: 36px;
-    margin-bottom: 15px;
+    font-size: 3rem;
+    margin-bottom: 2rem;
   }
 
   .main__text {
-    font-size: 18px;
-    max-width: 100%;
+    font-size: 1.2rem;
+    max-width: 33.375rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Services Section */
@@ -1846,6 +1922,10 @@ iframe {
   }
 
   /* Menu Items */
+  .menu-items {
+    grid-template-columns: 1fr;
+  }
+
   .menu-item {
     flex-direction: column;
     text-align: center;
@@ -1853,7 +1933,8 @@ iframe {
 
   .menu-item__image {
     width: 100%;
-    margin-bottom: 15px;
+    max-width: 300px;
+    margin: 0 auto 15px;
   }
 
   .menu-item__content {
@@ -1888,9 +1969,10 @@ iframe {
   }
 
   .hours-item {
-    flex-direction: column;
-    text-align: center;
-    margin-bottom: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
   }
 
   /* Footer */
@@ -1903,13 +1985,14 @@ iframe {
 
   /* Buttons */
   .button {
-    width: 100%;
+    display: inline-block;
+    width: auto;
     text-align: center;
-    padding: 15px 20px;
+    padding: 15px 30px;
   }
 
   .actions-header__button {
-    width: 100%;
+    width: auto;
     margin-top: 20px;
   }
 }
@@ -1917,18 +2000,18 @@ iframe {
 /* Small phones */
 @media screen and (max-width: 480px) {
   .main__title {
-    font-size: 28px;
+    font-size: 2.5rem;
   }
 
   .main__text {
-    font-size: 16px;
+    font-size: 1.1rem;
   }
 
   .services-page__title {
-    font-size: 24px;
+    font-size: 2rem;
   }
 
   .menu-item__header h4 {
-    font-size: 18px;
+    font-size: 1.3rem;
   }
 }
