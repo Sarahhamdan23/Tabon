@@ -1,6 +1,41 @@
-document.querySelector(".icon-menu").addEventListener("click", function (event) {
-  event.preventDefault();
-  document.body.classList.toggle("menu-open");
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu
+    const iconMenu = document.querySelector('.icon-menu');
+    const menuBody = document.querySelector('.menu__body');
+    
+    if (iconMenu) {
+        iconMenu.addEventListener('click', function(e) {
+            document.body.classList.toggle('_lock');
+            iconMenu.classList.toggle('_active');
+            menuBody.classList.toggle('_active');
+        });
+    }
+
+    // Close menu when clicking menu items
+    const menuLinks = document.querySelectorAll('.menu__link');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            document.body.classList.remove('_lock');
+            iconMenu.classList.remove('_active');
+            menuBody.classList.remove('_active');
+        });
+    });
+
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });
 
 const spollerButtons = document.querySelectorAll("[data-spoller] .spollers-faq__button");
